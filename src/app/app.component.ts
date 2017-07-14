@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {GetRssService} from './services/get-rss.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  constructor(private GetRssService: GetRssService) {
+  }
+
+  fnc() {
+    this.GetRssService.getData().subscribe(
+      responce => {
+        console.log(responce);
+      }
+    );
+  }
+  // fnc2() {
+  //   require('rss-to-json').load('https://codek.tv/feed/', function(err, rss){
+  //     console.log(rss);
+  //   });
+  // }
 }
