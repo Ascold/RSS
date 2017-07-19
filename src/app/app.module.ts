@@ -44,7 +44,7 @@ export class AppModule {
       [];
 
     ngRedux.configureStore(
-      rootReducer, {channel: []}, // TODO: Read state from local storage
+      rootReducer, {channel: [], currentMessageTitle: ''}, // TODO: Read state from local storage
       [],
       storeEnhancers);
   }

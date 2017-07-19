@@ -9,11 +9,18 @@ import {AppState} from '../../store/app.state';
 })
 export class MessageListComponent implements OnInit {
   currentChannel;
-  constructor(public ngRedux: NgRedux<AppState>) { }
-
-  ngOnInit() {
+  constructor(public ngRedux: NgRedux<AppState>) {
     this.ngRedux.select<string>('channel')
       .subscribe(data => this.currentChannel = data);
+  }
+  chooseMessage(x) {
+    this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessageTitle: x});
+    // console.log(x);
+  }
+
+  ngOnInit() {
+    // console.log(this.currentChannel);
+    // this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessageTitle: this.currentChannel.title});
   }
 
 }
