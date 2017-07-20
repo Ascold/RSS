@@ -3,7 +3,6 @@ import {GetRssService} from '../../services/get-rss.service';
 import {Message} from '../../models/Message';
 import {NgRedux} from '@angular-redux/store/lib/src';
 import {AppState} from '../../store/app.state';
-import {ChannelDescription} from 'app/models/ChannelDescription';
 
 @Component({
   selector: 'app-channel-list',
@@ -11,11 +10,10 @@ import {ChannelDescription} from 'app/models/ChannelDescription';
   styleUrls: ['./channel-list.component.css']
 })
 export class ChannelListComponent implements OnInit {
-  // channelDescription: ChannelDescription;
   feedURLs: Array<any>;
 
   constructor(private GetRssService: GetRssService, public ngRedux: NgRedux<AppState>) {
-    this.feedURLs = GetRssService.feedURLs;
+    this.feedURLs = GetRssService.RSS_Feeds;
   }
 
   ngOnInit() {
@@ -26,7 +24,6 @@ export class ChannelListComponent implements OnInit {
           currentChannel.push(new Message(data));
         });
         this.ngRedux.dispatch({type: 'SET_CHANNEL', channel: currentChannel});
-        // this.channelDescription = new ChannelDescription(responce.feed);
       }
     );
   }
