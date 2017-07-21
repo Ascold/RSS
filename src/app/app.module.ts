@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
-import {GetRssService} from './services/get-rss.service';
+import {RssService} from './services/rss.service';
 import { ChannelListComponent } from './components/channel-list/channel-list.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { SingleMessageComponent } from './components/single-message/single-message.component';
@@ -30,7 +30,7 @@ import {rootReducer} from 'app/store/store';
     HttpModule,
     NgReduxModule,
   ],
-  providers: [GetRssService],
+  providers: [RssService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -44,7 +44,7 @@ export class AppModule {
       [];
 
     ngRedux.configureStore(
-      rootReducer, {channel: [], currentMessageTitle: ''}, // TODO: Read state from local storage
+      rootReducer, { currentMessageCollection: [], currentMessageContent: '' }, // TODO: Read state from local storage
       [],
       storeEnhancers);
   }

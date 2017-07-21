@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgRedux} from '@angular-redux/store';
+
 import {AppState} from '../../store/app.state';
 
 @Component({
@@ -9,18 +10,24 @@ import {AppState} from '../../store/app.state';
 })
 export class MessageListComponent implements OnInit {
   currentChannel;
+
   constructor(public ngRedux: NgRedux<AppState>) {
-    this.ngRedux.select<string>('channel')
-      .subscribe(data => this.currentChannel = data);
   }
-  chooseMessage(x) {
-    this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessageTitle: x});
-    // console.log(x);
+
+  chooseMessage(currentTitle) {
+    this.ngRedux.select<object>('currentMessageCollection')
+      .subscribe(data => {
+        this.currentChannel = data;
+        let currentMessage = this.currentChannel.find(message => {
+          return message.title == currentTitle;
+        });
+        this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessageContent: currentMessage.content});
+      });
   }
 
   ngOnInit() {
-    // console.log(this.currentChannel);
-    // this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessageTitle: this.currentChannel.title});
+    this.ngRedux.select<string>('currentMessageCollection')
+      .subscribe(data => this.currentChannel = data);
   }
 
 }

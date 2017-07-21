@@ -2,7 +2,8 @@ export function singleMessageReducer(state: string = '', action: any) {
   switch (action.type) {
     case 'SET_MESSAGE':
       console.log('MessageReducer#SET_CurrentMessage');
-      return action.currentMessageTitle;
+      console.log(action.currentMessageContent);
+      return action.currentMessageContent;
     default:
       return state;
   }

@@ -6,6 +6,10 @@ ul {
   list-style-type: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 .single-message p {
   margin-top: 0;
 }

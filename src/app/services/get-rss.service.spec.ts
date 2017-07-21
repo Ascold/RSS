@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { GetRssService } from './get-rss.service';
+import { RssService } from './rss.service';
 
-describe('GetRssService', () => {
+describe('RssService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GetRssService]
+      providers: [RssService]
     });
   });
 
-  it('should ...', inject([GetRssService], (service: GetRssService) => {
+  it('should ...', inject([RssService], (service: RssService) => {
     expect(service).toBeTruthy();
   }));
 });

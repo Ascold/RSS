@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {GetRssService} from '../../services/get-rss.service';
-import {Message} from '../../models/Message';
+
 import {NgRedux} from '@angular-redux/store/lib/src';
+
+import {RssService} from '../../services/rss.service';
+import {Message} from '../../models/Message';
 import {AppState} from '../../store/app.state';
 
 @Component({
@@ -12,30 +14,23 @@ import {AppState} from '../../store/app.state';
 export class ChannelListComponent implements OnInit {
   feedURLs: Array<any>;
 
-  constructor(private GetRssService: GetRssService, public ngRedux: NgRedux<AppState>) {
-    this.feedURLs = GetRssService.RSS_Feeds;
+  constructor(private rssService: RssService, public ngRedux: NgRedux<AppState>) {
+    this.feedURLs = rssService.RSS_Feeds;
   }
 
   ngOnInit() {
-    this.GetRssService.getDataDefault().subscribe(
-      responce => {
-        let currentChannel = [];
-        responce.items.forEach(data => {
-          currentChannel.push(new Message(data));
-        });
-        this.ngRedux.dispatch({type: 'SET_CHANNEL', channel: currentChannel});
-      }
-    );
+    this.getData();
   }
-  getData(URL) {
-    this.GetRssService.getData(URL).subscribe(
+
+  getData(URL: string = this.feedURLs[0].URL) {
+    this.rssService.getData(URL).subscribe(
       responce => {
         console.log(responce);
-        let currentChannel = [];
+        let currentMessages = [];
         responce.items.forEach(data => {
-          currentChannel.push(new Message(data));
+          currentMessages.push(new Message(data));
         });
-        this.ngRedux.dispatch({type: 'SET_CHANNEL', channel: currentChannel});
+        this.ngRedux.dispatch({type: 'SET_CHANNEL', currentMessageCollection: currentMessages});
       }
     );
   }
