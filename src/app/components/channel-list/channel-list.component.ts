@@ -25,7 +25,6 @@ export class ChannelListComponent implements OnInit {
   getData(URL: string = this.feedURLs[0].URL) {
     this.rssService.getData(URL).subscribe(
       responce => {
-        console.log(responce);
         let currentMessages = [];
         responce.items.forEach(data => {
           currentMessages.push(new Message(data));
