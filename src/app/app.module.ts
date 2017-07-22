@@ -13,6 +13,7 @@ import { SingleMessageComponent } from './components/single-message/single-messa
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import {AppState} from 'app/store/app.state';
 import {rootReducer} from 'app/store/store';
+import {Message} from './models/Message';
 
 
 
@@ -44,7 +45,7 @@ export class AppModule {
       [];
 
     ngRedux.configureStore(
-      rootReducer, { currentMessageCollection: [], currentMessageContent: '' }, // TODO: Read state from local storage
+      rootReducer, { currentMessagesCollection: [], currentMessage: new Message({}) }, // TODO: Read state from local storage
       [],
       storeEnhancers);
   }

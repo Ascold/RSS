@@ -25,11 +25,13 @@ export class ChannelListComponent implements OnInit {
   getData(URL: string = this.feedURLs[0].URL) {
     this.rssService.getData(URL).subscribe(
       responce => {
-        let currentMessages = [];
+        console.log(responce);
+        const messages = [];
         responce.items.forEach(data => {
-          currentMessages.push(new Message(data));
+          messages.push(new Message(data));
         });
-        this.ngRedux.dispatch({type: 'SET_CHANNEL', currentMessageCollection: currentMessages});
+
+        this.ngRedux.dispatch({type: 'SET_MESSAGES', messages: messages});
       }
     );
   }

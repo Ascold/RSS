@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgRedux} from '@angular-redux/store';
 
 import {AppState} from '../../store/app.state';
+import {Message} from '../../models/Message';
 
 @Component({
   selector: 'app-single-message',
@@ -13,15 +14,15 @@ export class SingleMessageComponent implements OnInit {
   currentMessage;
 
   constructor(public ngRedux: NgRedux<AppState>) {
-    this.ngRedux.select<string>('currentMessageContent')
+    this.ngRedux.select<Message>('currentMessage')
       .subscribe(data => this.currentMessage = data);
   }
 
   ngOnInit() {
-    this.ngRedux.select<any>('currentMessageCollection')
+    this.ngRedux.select<any>('currentMessagesCollection')
       .subscribe(data => {
         if (data.length) {
-          this.currentMessage = data[0].content;
+          this.currentMessage = data[0];
         }
       });
   }

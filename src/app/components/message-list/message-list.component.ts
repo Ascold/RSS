@@ -14,18 +14,16 @@ export class MessageListComponent implements OnInit {
   constructor(public ngRedux: NgRedux<AppState>) {
   }
 
-  chooseMessage(currentTitle) {
-          let currentMessage = this.currentChannel.find(message => {
-            return message.title === currentTitle;
-          });
-          console.log('currentMessage');
-          console.log(currentMessage);
-          this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessageContent: currentMessage.content});
+  ngOnInit() {
+    this.ngRedux.select<string>('currentMessagesCollection')
+      .subscribe(data => this.currentChannel = data);
   }
 
-  ngOnInit() {
-    this.ngRedux.select<string>('currentMessageCollection')
-      .subscribe(data => this.currentChannel = data);
+  chooseMessage(currentTitle) {
+    const currentMessage = this.currentChannel.find(message => {
+      return message.title === currentTitle;
+    });
+    this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessage: currentMessage});
   }
 
 }
