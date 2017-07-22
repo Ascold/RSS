@@ -13,3 +13,7 @@ li {
   background: deepskyblue;
   cursor: pointer;
 }
+
+.currentChannel {
+  color: white;
+}
