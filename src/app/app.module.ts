@@ -15,7 +15,14 @@ import {AppState} from 'app/store/app.state';
 import {rootReducer} from 'app/store/store';
 import {Message} from './models/Message';
 
+import {ChartModule} from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import * as highcharts from 'highcharts';
 
+
+export function highchartsFactory() {
+  return highcharts;
+}
 
 @NgModule({
   declarations: [
@@ -30,8 +37,14 @@ import {Message} from './models/Message';
     FormsModule,
     HttpModule,
     NgReduxModule,
+    ChartModule
   ],
-  providers: [RssService],
+  providers: [RssService,
+    {
+      provide: HighchartsStatic,
+      useFactory: highchartsFactory
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
