@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.clearfix:before, .clearfix:after {
+  content: '';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
 
 ul {
   margin: 0;

@@ -14,16 +14,10 @@ export class SingleMessageComponent implements OnInit {
   currentMessage;
 
   constructor(public ngRedux: NgRedux<AppState>) {
-    this.ngRedux.select<Message>('currentMessage')
-      .subscribe(data => this.currentMessage = data);
   }
 
   ngOnInit() {
-    this.ngRedux.select<any>('currentMessagesCollection')
-      .subscribe(data => {
-        if (data.length) {
-          this.currentMessage = data[0];
-        }
-      });
+    this.ngRedux.select<Message>('currentMessage')
+      .subscribe(data => this.currentMessage = data);
   }
 }

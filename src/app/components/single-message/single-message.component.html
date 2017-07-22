@@ -1,6 +1,13 @@
 <div class="wrapper">
-  <div [innerHTML]="currentMessage.title"></div>
-  <div [innerHTML]="currentMessage.author"></div>
-  <div [innerHTML]="currentMessage.pubDate"></div>
+  <div class="clearfix">
+    <div class="message-title">
+      <div [innerHTML]="currentMessage.title"></div>
+      <div [innerHTML]="currentMessage.author"></div>
+      <div [innerHTML]="currentMessage.pubDate"></div>
+    </div>
+    <div class="statistics">
+      <app-statistics></app-statistics>
+    </div>
+  </div>
   <div [innerHTML]="currentMessage.content"></div>
 </div>

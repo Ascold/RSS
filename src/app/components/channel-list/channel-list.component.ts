@@ -31,7 +31,7 @@ export class ChannelListComponent implements OnInit {
 
     this.rssService.getData(channel.URL).subscribe(
       responce => {
-        console.log('ChannelListComponent#getData from RSSAPI:', responce);
+        // console.log('ChannelListComponent#getData from RSSAPI:', responce);
 
         const messages = [];
         responce.items.forEach(data => {
@@ -39,6 +39,7 @@ export class ChannelListComponent implements OnInit {
         });
 
         this.ngRedux.dispatch({type: 'SET_MESSAGES', messages: messages});
+        this.ngRedux.dispatch({type: 'SET_MESSAGE', currentMessage: messages[0]});
 
         this.messagesCount = messages.length;
         this.authorCount = new Set(messages.map(x => { return x.author; })).size;
