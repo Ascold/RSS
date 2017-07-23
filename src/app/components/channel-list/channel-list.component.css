@@ -1,19 +1,34 @@
-.wrapper {
-
-}
-
-.channels li {
-margin-bottom: 5px;
+p {
+  margin: 0;
 }
 
 li {
   padding: 5px 10px;
   border: 1px solid black;
   border-radius: 5px;
-  background: deepskyblue;
   cursor: pointer;
 }
 
+.title {
+  font-size: 20px;
+}
+.currentChannel .title {
+  margin-bottom: 15px;
+
+}
+
+.channel-statistics p {
+  font-size: 14px;
+  display: inline-block;
+}
+.channel-statistics p:first-child {
+  margin-right: 10px;
+}
+
+.channels li {
+  margin-bottom: 10px;
+}
+
 .currentChannel {
-  background: white;
+  background: lightskyblue;
 }

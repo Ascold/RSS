@@ -24,7 +24,6 @@ export class StatisticsComponent implements OnInit {
       .subscribe(message => {
         const letterMap = {};
         const messageContent = this.replaceHtmlTags(message.content);
-        // let messageContent = this.replaceHtmlTags(message.content);
 
         messageContent.split('').forEach(char => {
           char = char.toLocaleLowerCase();
@@ -41,9 +40,10 @@ export class StatisticsComponent implements OnInit {
   }
 
   replaceHtmlTags(str: string): string {
-    return str.replace(/<.*?>/g, '')
-      .replace(/[0-9]/g, '')
-      .replace(/[\s\t\r\f\a\e]/g, '').replace(/\t/g, '');
+    return str.replace(/<.*?>/, '')
+      .replace(/[^а-яёА-ЯЁa-zA-Z]/g, '');
+    // .replace(/\P{L}/gi, '');
+
   }
 
   setChartData(data, contentCount: number) {
@@ -53,7 +53,6 @@ export class StatisticsComponent implements OnInit {
       chartData.push([key, data[key] / contentCount * 100]);
     }
 
-    console.log(chartData);
 
     this.options = {
       chart: {

@@ -1,12 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-.clearfix:before, .clearfix:after {
-  content: '';
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
 
 ul, h1 {
   margin: 0;
@@ -14,15 +6,11 @@ ul, h1 {
   list-style-type: none;
 }
 
-body {
-  /*font-size: 20px;*/
-}
-
 img {
   max-width: 100%;
 }
 
-.single-message p {
+p {
   margin-top: 0;
 }
 
