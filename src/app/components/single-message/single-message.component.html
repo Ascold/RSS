@@ -1,7 +1,7 @@
 <div class="wrapper">
-  <div class="clearfix">
+  <div class="message-header">
     <div class="message-title">
-      <div [innerHTML]="currentMessage.title"></div>
+      <h1 [innerHTML]="currentMessage.title"></h1>
       <div [innerHTML]="currentMessage.author"></div>
       <div [innerHTML]="currentMessage.pubDate"></div>
     </div>
@@ -9,5 +9,5 @@
       <app-statistics></app-statistics>
     </div>
   </div>
-  <div [innerHTML]="currentMessage.content"></div>
+  <div class="content" [innerHTML]="currentMessage.content"></div>
 </div>

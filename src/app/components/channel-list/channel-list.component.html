@@ -1,7 +1,7 @@
 <div class="wrapper">
   <ul class="channels">
-    <li *ngFor="let item of feedURLs" (click)="getData(item)">
-      <p [ngClass]="{'currentChannel': item.title === currentChannel.title}">{{item.title}}</p>
+    <li [ngClass]="{'currentChannel': item.title === currentChannel.title}" *ngFor="let item of feedURLs" (click)="getData(item)">
+      <p>{{item.title}}</p>
       <div *ngIf="messagesCount && authorCount && item.title === currentChannel.title">
         <p>Сообщений в ленте: {{messagesCount}}</p>
         <p>Авторов в ленте: {{authorCount}}</p>

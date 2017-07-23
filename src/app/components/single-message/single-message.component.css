@@ -1,7 +1,33 @@
+.wrapper {
+  padding: 0 10px;
+}
+
+.message-header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-bottom: 20px;
+}
+
 .message-title {
-  float: left;
+  width: 50%;
+}
+
+.message-title h1 {
+  margin-bottom: 20px;
+}
+
+.message-title div {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .statistics {
-  float: right;
+  width: 50%;
 }
+
+
