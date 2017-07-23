@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+
 import {NgRedux} from '@angular-redux/store';
 
 import {AppState} from '../../store/app.state';

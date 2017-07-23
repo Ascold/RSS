@@ -10,17 +10,18 @@ li {
 }
 
 .title {
-  font-size: 20px;
+  font-size: 18px;
 }
+
 .currentChannel .title {
   margin-bottom: 15px;
-
 }
 
 .channel-statistics p {
   font-size: 14px;
   display: inline-block;
 }
+
 .channel-statistics p:first-child {
   margin-right: 10px;
 }
@@ -30,5 +31,5 @@ li {
 }
 
 .currentChannel {
-  background: lightskyblue;
+  background: #c9fffc;
 }

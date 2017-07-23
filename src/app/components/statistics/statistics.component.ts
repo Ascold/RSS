@@ -33,7 +33,6 @@ export class StatisticsComponent implements OnInit {
             letterMap[char] = 1;
           }
         });
-        console.log('LETER MAP', letterMap);
 
         this.setChartData(letterMap, messageContent.length);
       });

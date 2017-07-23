@@ -31,7 +31,6 @@ export class ChannelListComponent implements OnInit {
 
     this.rssService.getData(channel.URL).subscribe(
       responce => {
-        // console.log('ChannelListComponent#getData from RSSAPI:', responce);
 
         const messages = [];
         responce.items.forEach(data => {
